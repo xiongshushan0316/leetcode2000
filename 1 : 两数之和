@@ -1,1 +1,17 @@
-test
+class Solution {
+public:
+    //小熊语录： 
+    //unordered_map 基于hash实现，操作都是O(1)时间复杂度
+    vector<int> twoSum(vector<int>& nums, int target) {
+        // 1 : 定义 map <diff,index>  
+        //     diff:扫描过的元素（下标为index）与目标值target差 存储距离目标值差距
+        //     之后寻找是否存在可以弥补这个差距的元素，
+        unordered_map<int,int> hash;
+        for(int i = 0; i < nums.size(); i ++){
+            if(hash.find(nums[i]) != hash.end())
+                return {hash[nums[i]],i};
+            hash[target - nums[i]] = i;
+        }
+        return {};
+    }
+};···················
